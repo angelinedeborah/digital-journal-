@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juno | Crimson Journal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="login-screen" class="auth-wrapper">
+    <div class="auth-card">
+        <div class="auth-logo">juno</div>
+        <h2 id="auth-title">Sign In</h2>
+        <form id="auth-form">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit" id="auth-btn">Login</button>
+        </form>
+        <p class="toggle-text" onclick="toggleAuth()">New here? <span>Create an account</span></p>
+        <p id="auth-error" class="error"></p>
+    </div>
+</div>
+
+<div id="app" class="hidden">
+    
+    <nav class="navbar">
+        <div class="logo">juno</div>
+        <div class="nav-right">
+            <span id="user-display"></span>
+            <button onclick="handleLogout()" class="logout-btn">Sign Out</button>
+        </div>
+    </nav>
+
+    <div class="main-layout">
+        
+        <section id="calendar-view" class="view">
+            <div class="calendar-card">
+                <div class="cal-header">
+                    <button onclick="changeMonth(-1)">&#10094;</button>
+                    <div class="cal-title">
+                        <select id="month-select" onchange="jump()"></select>
+                        <input type="number" id="year-select" onchange="jump()">
+                    </div>
+                    <button onclick="changeMonth(1)">&#10095;</button>
+                </div>
+                <div class="weekdays">
+                    <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+                </div>
+                <div id="calendar-grid" class="grid"></div>
+            </div>
+        </section>
+
+        <section id="editor-view" class="view hidden">
+            <div class="editor-container">
+                <aside class="history-panel">
+                    <h3>Memories</h3>
+                    <ul id="history-list"></ul>
+                    <button onclick="showCalendar()" class="minimal-btn">← Calendar</button>
+                </aside>
+                <div class="writing-area">
+                    <div class="write-header">
+                        <h2 id="entry-date-title"></h2>
+                        <button onclick="saveEntry()" class="save-btn">Save to Vault</button>
+                    </div>
+                    <textarea id="journal-text" placeholder="Write your heart out..."></textarea>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
